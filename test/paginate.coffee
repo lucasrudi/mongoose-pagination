@@ -47,3 +47,9 @@ describe 'Mongoose Pagination', ->
       query.options.should.include.keys 'skip', 'limit'
       query.options.skip.should.be.eq 30
       query.options.limit.should.be.eq 15
+
+    it 'should count the elements without getting the docs', ->
+      query.paginate "0"
+      query.options.should.include.keys 'skip', 'limit'
+      query.options.skip.should.be.eq -10
+      query.options.limit.should.be.eq 10
